@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Packages — MK Net</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="../index.html">MK Net</a>
+    <nav>
+      <a href="packages.html">Packages</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="paybill.html">Pay Bill</a>
+      <a href="selfcare.html">Self Care</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <h2>Our packages</h2>
+  <div class="grid" id="pkgGrid"></div>
+</main>
+<footer class="site-footer">
+  <div class="tiny">© 2025 MK Net. All rights reserved.</div>
+</footer>
+
+<script>
+fetch('../../assets/data/packages.json')
+  .then(r => r.json())
+  .then(rows => {
+    const grid = document.getElementById('pkgGrid');
+    grid.innerHTML = rows.map(p => {
+      const slug = p.name.toLowerCase();
+      const img = `../../assets/images/packages/${slug}.jpg`;
+      return `
+        <div class="card">
+          <img src="${img}" alt="${p.name}" style="width:100%;border-radius:8px;margin-bottom:10px">
+          <h3>${p.name}</h3>
+          <p><b>Speed:</b> ${p.speed_mbps} Mbps</p>
+          <p><b>Price:</b> ${p.price_bdt} BDT / month</p>
+          <p>${p.description}</p>
+          <p><a class="btn" href="paybill.html">Subscribe</a></p>
+        </div>`;
+    }).join('');
+  });
+</script>
+</body>
+</html>

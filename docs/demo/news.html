@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>News — MK Net</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="site-header"><div class="container">
+  <a class="logo" href="../index.html">MK Net</a>
+  <nav>
+    <a href="packages.html">Packages</a><a href="coverage.html">Coverage</a>
+    <a href="paybill.html">Pay Bill</a><a href="selfcare.html">Self Care</a>
+    <a href="news.html">News</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  </nav>
+</div></header>
+<main class="container">
+  <h2>News & Events</h2>
+  <div class="grid" id="newsGrid"></div>
+</main>
+<footer class="site-footer"><div class="tiny">© 2025 MK Net. All rights reserved.</div></footer>
+<script>
+fetch('../../assets/data/news.json').then(r=>r.json()).then(rows=>{
+  document.getElementById('newsGrid').innerHTML = rows.map(n=>{
+    const slug = n.slug;
+    let img = `../../assets/images/news/${slug}.jpg`;
+    return `
+      <div class="card">
+        <img src="${img}" alt="${n.title}" style="width:100%;border-radius:8px;margin-bottom:10px">
+        <h3>${n.title}</h3>
+        <p class="tiny">${n.event_date}</p>
+        <p>${n.content}</p>
+      </div>`;
+  }).join('');
+});
+</script>
+</body>
+</html>

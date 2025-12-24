@@ -1,0 +1,5 @@
+[
+  {"name":"Starter","speed_mbps":20,"price_bdt":999,"description":"Reliable home internet for light use"},
+  {"name":"Standard","speed_mbps":50,"price_bdt":1499,"description":"Balanced speed for families"},
+  {"name":"Turbo","speed_mbps":100,"price_bdt":1999,"description":"Streaming and gaming ready"}
+]

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Coverage — MK Net</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="../index.html">MK Net</a>
+    <nav>
+      <a href="packages.html">Packages</a>
+      <a href="coverage.html">Coverage</a>
+      <a href="paybill.html">Pay Bill</a>
+      <a href="selfcare.html">Self Care</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <div style="background-image:url('../../assets/images/coverage.jpg');background-size:cover;background-position:center;padding:40px;border-radius:12px;margin-bottom:20px">
+    <h2>Coverage area</h2>
+    <form onsubmit="return false;">
+      <label>District</label><input class="input" id="district" placeholder="Bogra">
+      <label>Upazila</label><input class="input" id="upazila" placeholder="Sadar">
+      <p><button class="btn" onclick="search()">Search</button></p>
+    </form>
+  </div>
+
+  <table class="table" id="covTable">
+    <tr><th>District</th><th>Upazila</th><th>Status</th></tr>
+  </table>
+</main>
+<footer class="site-footer"><div class="tiny">© 2025 MK Net. All rights reserved.</div></footer>
+
+<script>
+let rows = [];
+fetch('../../assets/data/coverage.json').then(r=>r.json()).then(data => {
+  rows = data; render(rows);
+});
+function render(data){
+  const t = document.getElementById('covTable');
+  t.innerHTML = '<tr><th>District</th><th>Upazila</th><th>Status</th></tr>' +
+    data.map(r=>`<tr><td>${r.district}</td><td>${r.upazila}</td><td>${r.status}</td></tr>`).join('');
+}
+function search(){
+  const d = document.getElementById('district').value.trim().toLowerCase();
+  const u = document.getElementById('upazila').value.trim().toLowerCase();
+  const filtered = rows.filter(r =>
+    (!d || r.district.toLowerCase().includes(d)) &&
+    (!u || r.upazila.toLowerCase().includes(u))
+  );
+  render(filtered);
+}
+</script>
+</body>
+</html>

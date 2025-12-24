@@ -1,0 +1,156 @@
+:root {
+  --bg:#0e1117;
+  --card:#161a22;
+  --text:#e6edf3;
+  --muted:#9da7b3;
+  --accent:#2f81f7;
+  --ok:#22c55e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  background-image: url('images/bg-pattern.jpg'); /* assets/style.css → assets/images/bg-pattern.jpg */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: var(--text);
+  font-family: system-ui, Arial;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5); /* dark overlay */
+  z-index: -1;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.site-header {
+  background: #0b0e14;
+  border-bottom: 1px solid #202635;
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+nav a {
+  color: var(--muted);
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+nav a:hover { color: #fff; }
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 24px 0;
+}
+
+.hero img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  padding: 16px;
+  border: 1px solid #202635;
+  border-radius: 10px;
+}
+
+.input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #202635;
+  background: #0b0e14;
+  color: var(--text);
+}
+
+label {
+  display: block;
+  margin: 8px 0 4px;
+  color: #c9d1d9;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  border: 1px solid #202635;
+  padding: 10px;
+  text-align: left;
+}
+
+.site-footer {
+  border-top: 1px solid #202635;
+  margin-top: 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.tiny {
+  color: var(--muted);
+  text-align: center;
+  padding: 8px;
+}
+
+.social img {
+  height: 20px;
+  margin-right: 8px;
+  filter: invert(85%);
+}
+
+.alert {
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.success {
+  background: #0c2f1e;
+  color: #9be7c4;
+  border: 1px solid #1f6f49;
+}
+
+.error {
+  background: #2f1515;
+  color: #f29f9f;
+  border: 1px solid #803b3b;
+}
