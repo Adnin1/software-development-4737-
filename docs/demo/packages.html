@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Packages — MK Net</title>
-  <link rel="stylesheet" href="../../assets/style.css">
+  <link rel="stylesheet" href="/software-development-4737/assets/style.css">
 </head>
 <body>
 <header class="site-header">
@@ -30,13 +30,13 @@
 </footer>
 
 <script>
-fetch('../../assets/data/packages.json')
+fetch('/software-development-4737/assets/data/packages.json')
   .then(r => r.json())
   .then(rows => {
     const grid = document.getElementById('pkgGrid');
     grid.innerHTML = rows.map(p => {
       const slug = p.name.toLowerCase();
-      const img = `../../assets/images/packages/${slug}.jpg`;
+      const img = `/software-development-4737/assets/images/packages/${slug}.jpg`;
       return `
         <div class="card">
           <img src="${img}" alt="${p.name}" style="width:100%;border-radius:8px;margin-bottom:10px">
